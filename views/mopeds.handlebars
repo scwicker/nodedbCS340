@@ -1,0 +1,63 @@
+<h1>Add mopeds to the database with the following form </h1>
+
+<div>
+<form id="addmopeds" action"/parts" method="post">
+<!-- label is what displays on left side of form  -->
+    <label>Enter Make -</label> <input type="text" name="Make" id="make" placeholder="Make" required><br>
+    <label>Enter Model -</label> <input type="text" name="Model" id="model" placeholder="Model" required><br>
+    <label>Enter Year -</label> <input type="number" name="Year" id="year" placeholder="2018" required><br>
+
+    <!-- add button id is what helpers references -->
+<!-- value is what actually displays on the button -->
+    <input type="submit" value = "Add Mopeds">
+    <!-- When update is clicked it calls /parts handlebars (basically reloads page) -->
+
+</form><br>
+
+<div>
+<form id='search_mopeds' action='javascript:searchMopeds();' method=''>
+<!--- this form does not submit directly, the button handles all the interaction with backend -->
+    <label> Search mopeds by model name starting with:</label>
+    <input id='moped_name_search' type='text' name='moped_name_search' placeholder='search model' required>
+    <input type="submit" value="Search">
+</form>
+</div>
+
+
+
+
+<!-- //this is the actual results table  -->
+<div id="div2">
+<table id="mopedsTable" border="1px">
+    <tr>
+        <th style="color:blue;">ID</th>
+        <th style="color:blue;">Make</th>
+        <th style="color:blue;">Model</th>
+        <th style="color:blue;">Year</th>
+        <th style="color:blue;">Update</th>
+        <th style="color:blue;">Delete</th>
+        <th></th>
+    </tr>
+
+    <!--loop through table for each result-->
+    {{#if Mopeds}}
+        {{#each Mopeds}}
+            <tr>
+                <td>{{this.ID}}
+                <td>{{this.Make}}</td>
+                <td>{{this.Model}}</td>
+                <td>{{this.Year}}</td>
+
+                <td><a href="/mopeds/{{this.ID}}">Update</a></td>
+                <td>
+                    <button onclick="deleteMopeds({{this.ID}})">Delete</button>
+          </td>
+            </tr>
+        {{/each}}
+    {{/if}}
+</table>
+</div>
+
+<!--located in public folder-->
+<script src="/deleteparts.js"></script>
+<script src="/searchparts.js"></script>

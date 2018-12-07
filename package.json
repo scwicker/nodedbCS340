@@ -1,0 +1,20 @@
+{
+  "name": "cs340_wickerssdb",
+  "version": "1.0.0",
+  "description": "scott database with mysql, express, node.js",
+  "main": "app.js",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "express-handlebars": "^3.0.0",
+    "forever": "^0.15.3",
+    "mysql": "^2.16.0",
+    "node": "^10.13.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

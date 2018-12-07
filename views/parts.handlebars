@@ -1,0 +1,55 @@
+<h1>Add parts to inventory with the following form </h1>
+
+<div>
+<form id="addparts" action"/parts" method="post">
+<!-- label is what displays on left side of form  -->
+    <label>Enter Part Name -</label> <input type="text" name="Name" placeholder="Part Name" required><br>
+    <label>Enter Cost-</label> <input type="number" name="Cost" placeholder="0" min="0" required><br>
+    <input type="submit" value = "Add Parts" >
+
+</form><br>
+
+</div>
+
+<div>
+<form id='search_parts' action='javascript:searchParts();' method=''>
+<!--- this form does not submit directly, the button handles all the interaction with backend -->
+    <label> Search parts for part name starting with:</label>
+    <input id='part_name_search' type='text' name='part_name_search' placeholder='search parts' required>
+    <input type="submit" value="Search">
+</form>
+</div>
+
+<!-- //this is the actual results table  -->
+<div id="div2">
+<table id="partsTable" border="1px">
+    <tr>
+        <th style="color:blue;">ID</th>
+        <th style="color:blue;">Part Name</th>
+        <th style="color:blue;">Price</th>
+        <th style="color:blue;">Update</th>
+        <th style="color:blue;">Delete</th>
+
+    </tr>
+
+    <!--loop through table for each result-->
+    {{#if Parts}}
+        {{#each Parts}}
+            <tr>
+                <td>{{this.PartID}}
+                <td>{{this.Name}}</td>
+                <td>{{this.Cost}}</td>
+
+                <td><a href="/parts/{{this.PartID}}">Update</a></td>
+                      <td>
+                          <button onclick="deleteParts({{this.PartID}})">Delete</button>
+                </td>
+            </tr>
+        {{/each}}
+    {{/if}}
+</table>
+</div>
+
+<!--located in public folder-->
+<script src="/deleteparts.js"></script>
+<script src="/searchparts.js"></script>

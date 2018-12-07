@@ -1,0 +1,65 @@
+<h1>Add parts orders to the database with the following form </h1>
+
+<div>
+<form id="addpartsorders" action"/partsorders" method="post">
+
+    <!-- <label>Enter Moped -</label> <input type="text" name="moped" id="moped" value="Moped" required><br> -->
+    <label>Select Invoice -</label>
+    <select name = "InvoiceID"required>
+          {{#each Invoices}}
+              <option value = "{{ID}}"> {{ID}} </option>
+          {{/each}}
+      </select></br>
+
+      <label>Select PartID -</label>
+      <select name = "PartID"required>
+            {{#each Parts}}
+                <option value = "{{PartID}}"> {{Name}} </option>
+            {{/each}}
+        </select></br>
+
+
+    <label>Enter QTY-</label> <input type="number" name="QTY" placeholder="1" min="0" required><br>
+
+    <input type="submit" value = "Submit">
+    <label>*Note to users* InvoiceID and PartID relationship must be unique. </label>
+    <label>Your submission attempt will be denied if you attempt to violate the constraint.</label>
+</form><br>
+
+</div>
+
+
+
+  <div id ="div2">
+<table id="partsOrdersTable" border="1px">
+    <tr>
+        <th style="color:blue;">InvoiceID</th>
+        <th style="color:blue;">PartID</th>
+        <th style="color:blue;">QTY</th>
+        <th style="color:blue;">Update</th>
+        <th style="color:blue;">Delete</th>
+        <th></th>
+    </tr>
+
+    <!--loop through table for each result-->
+    {{#if PartsOrders}}
+        {{#each PartsOrders}}
+            <tr>
+                <td>{{this.InvoiceID}}
+                <td>{{this.Name}}</td>
+                <td>{{this.QTY}}</td>
+
+
+                <td><a href="/partsorders/InvoiceID/{{this.InvoiceID}}/PartID/{{this.PartID}}">Update</a></td>
+                <td>
+                    <button onclick="deletePartsOrders({{this.InvoiceID}} ,{{this.PartID}})">Delete</button>
+          </td>
+            </tr>
+        {{/each}}
+    {{/if}}
+</table>
+</div>
+
+<!--located in public folder-->
+<script src="/deleteparts.js"></script>
+<script src="/searchparts.js"></script>

@@ -1,0 +1,64 @@
+<h1>Add Invoices to the database with the following form </h1>
+
+<div>
+<form id="addinvoices" action"/invoices" method="post">
+<!-- label is what displays on left side of form  -->
+<label>Select Customer -</label>
+<select name = "CustomerID"required>
+      {{#each Customers}}
+          <option value = "{{ID}}"> {{Fname}} {{Lname}} </option>
+      {{/each}}
+  </select></br>
+
+    <label>Select Date -</label> <input type="date" name="Date" required><br>
+    <!-- <label>Enter Moped -</label> <input type="text" name="moped" id="moped" value="Moped" required><br> -->
+
+    <input type="submit" value = "Submit">
+</form><br>
+
+</div>
+
+
+
+
+<div>
+<form id='search_invoices' action='javascript:searchInvoices();' method=''>
+<!--- this form does not submit directly, the button handles all the interaction with backend -->
+    <label> Search invoices by customer first name starting with:</label>
+    <input id='invoice_name_search' type='text' name='invoice_name_search' placeholder='search by first name' required>
+    <input type="submit" value="Search">
+</form>
+</div>
+
+<!-- //this is the actual results table  -->
+<div id="div2">
+<table id="invoicesTable" border="1px">
+    <tr>
+        <th style="color:blue;">Invoice Number</th>
+        <th style="color:blue;">Customer Name</th>
+        <th style="color:blue;">Date</th>
+        <th style="color:blue;">Total Cost</th>
+        <th style="color:blue;">Update</th>
+        <th style="color:blue;">Delete</th>
+        <th></th>
+    </tr>
+
+    <!--loop through table for each result-->
+        {{#each Invoices}}
+            <tr>
+                <td>{{this.ID}}
+                <td>{{this.Fname}} {{this.Lname}}</td>
+                <td>{{this.Date}}</td>
+                <td>{{this.Total}}</td>
+                <td><a href="/invoices/{{this.ID}}">Update</a></td>
+                <td>
+                    <button onclick="deleteInvoices({{this.ID}})">Delete</button>
+          </td>
+            </tr>
+        {{/each}}
+</table>
+</div>
+
+<!--located in public folder-->
+<script src="/searchparts.js"></script>
+<script src="/deleteparts.js"></script>

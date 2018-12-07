@@ -1,0 +1,15 @@
+
+<html>
+<h1>Update {{Parts.Name}}:</h1>
+<div>
+<form id="update-parts" action="/parts" method="post">
+    Name: <input type="text" name="Name" value="{{Parts.Name}}" required><br>
+    Price: <input type="number" name="Cost" value="{{Parts.Cost}}" required><br>
+
+</form>
+<button onclick="updateParts({{Parts.PartID}})">Update</button>
+</div>
+</html>
+
+
+<script src="/updateparts.js"></script>

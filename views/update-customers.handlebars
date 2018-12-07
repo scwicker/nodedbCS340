@@ -1,0 +1,22 @@
+
+<html>
+<h1>Update {{Customers.Fname}}:</h1>
+<form id="update-customers" action="/customers" method="post">
+    First Name: <input type="text" name="Fname" value="{{Customers.Fname}}" required><br>
+    Last Name: <input type="text" name="Lname" value="{{Customers.Lname}}" required><br>
+    Moped: <select name="Moped" id="moped-selector" required>
+        {{#each Mopeds}}
+        <option value="{{id}}">{{Make}} {{Model}} </option>
+        {{/each}}
+    </select><br>
+    Phone: <input type="number" name="Phone" value="{{Customers.Phone}}"><br>
+
+</form>
+<button onclick="updateCustomers({{Customers.ID}})">Update</button>
+<script defer>selectMoped({{Customers.Moped}});</script>
+
+</html>
+
+<script src="/selectedmoped.js"></script>
+
+<script src="/updateparts.js"></script>

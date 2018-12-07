@@ -1,0 +1,33 @@
+<html>
+<h1>Update PartOrder, InvoiceID: {{PartsOrders.InvoiceID}} partID:{{PartsOrders.PartID}}:</h1>
+
+<div>
+  <form id="update-partsorders" action="/partsorders" method="post">
+
+    InvoiceID: <select name="InvoiceID" id="invoice-selector" required>
+        {{#each Invoices}}
+        <option value="{{ID}}">{{ID}} </option>
+        {{/each}}
+    </select><br>
+
+    Part Name: <select name="PartID" id="part-selector" required>
+        {{#each Parts}}
+        <option value="{{PartID}}">{{Name}} </option>
+        {{/each}}
+    </select><br>
+
+    QTY: <input type="number" name="QTY" value="{{PartsOrders.QTY}}" required><br>
+
+</form>
+
+<button onclick="updatePartsOrders({{PartsOrders.InvoiceID}},{{PartsOrders.PartID}})">Update</button>
+<label>*Note to users* InvoiceID and PartID relationship must be unique. </label>
+<label>Your update attempt will be denied if you attempt to violate the constraint.</label>
+</div>
+<script defer>selectInvoice({{PartsOrders.InvoiceID}});</script>
+<script defer>selectPart({{PartsOrders.PartID}});</script>
+
+</html>
+
+
+<script src="/updateparts.js"></script>

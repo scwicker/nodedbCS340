@@ -1,0 +1,70 @@
+<h1>Add customers to the database with the following form </h1>
+
+<div>
+<form id="addcustomers" action"/customers" method="post">
+<!-- label is what displays on left side of form  -->
+    <label>Enter First Name -</label> <input type="text" name="Fname" placeholder="First Name" required><br>
+    <label>Enter Last Name -</label> <input type="text" name="Lname" placeholder="Last Name" required><br>
+    <!-- <label>Enter Moped -</label> <input type="text" name="moped" id="moped" value="Moped" required><br> -->
+    <label>Select Moped -</label>
+    <select name = "Moped"required>
+          {{#each Mopeds}}
+              <option value = "{{id}}"> {{Make}} {{Model}} </option>
+          {{/each}}
+      </select></br>
+    <label>Enter Phone Number-</label> <input type="number" name="Phone" placeholder="8001234567" min="0" required><br>
+
+    <input type="submit" value = "Submit">
+</form><br>
+
+</div>
+
+<div>
+<form id='search_customers' action='javascript:searchCustomers();' method=''>
+<!--- this form does not submit directly, the button handles all the interaction with backend -->
+<label> Search customers by first name starting with:</label>
+<input id='customer_name_search' type='text' name='customer_name_search' placeholder='search first name' required>
+<input type="submit" value="Search">
+</form>
+</div>
+
+
+
+
+
+  <div id ="div2">
+<table id="customersTable" border="1px">
+    <tr>
+        <th style="color:blue;">ID</th>
+        <th style="color:blue;">First Name</th>
+        <th style="color:blue;">Last Name</th>
+        <th style="color:blue;">Moped</th>
+        <th style="color:blue;">Phone</th>
+        <th style="color:blue;">Update</th>
+        <th style="color:blue;">Delete</th>
+        <th></th>
+    </tr>
+
+    <!--loop through table for each result-->
+    {{#if Customers}}
+        {{#each Customers}}
+            <tr>
+                <td>{{this.ID}}
+                <td>{{this.Fname}}</td>
+                <td>{{this.Lname}}</td>
+                <td>{{Make}} {{Model}}</td>
+                <td>{{this.Phone}}</td>
+
+                <td><a href="/customers/{{this.ID}}">Update</a></td>
+                <td>
+                    <button onclick="deleteCustomers({{this.ID}})">Delete</button>
+          </td>
+            </tr>
+        {{/each}}
+    {{/if}}
+</table>
+</div>
+
+<!--located in public folder-->
+<script src="/deleteparts.js"></script>
+<script src="/searchparts.js"></script>

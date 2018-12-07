@@ -1,0 +1,35 @@
+<!DOCTYPE html5>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/sheets.css">
+    <title>Moped Shop Database</title>
+
+
+
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+        {{#each jsscripts}}
+        <script src="/static/{{this}}"></script>
+        {{/each}}
+
+
+</head>
+<body>
+  <table class="navbar" border = "1px">
+    <tr>
+    <th><a href="/home">Home</a></th>
+    <th>View/Edit <a href="/parts">Parts</a></th>
+    <th>View/Edit <a href="/mopeds">Mopeds</a></th>
+    <th>View/Edit <a href="/customers">Customers</a></th>
+    <th>View/Edit <a href="/partsorders">Parts Orders</a></th>
+    <th>View/Edit <a href="/invoices">Invoices</a></th>
+
+  </tr>
+</table>
+
+
+    {{{body}}}
+
+
+</body>
+</html>

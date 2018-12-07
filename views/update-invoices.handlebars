@@ -1,0 +1,20 @@
+
+<html>
+<h1>Update Invoice ID: {{Invoices.ID}} for {{Invoices.Fname}} {{Invoices.Lname}}</h1>
+<form id="update-invoices" action="/invoices" method="post">
+
+    Name: <select name="CustomerID" id="customer-selector" required>
+        {{#each Customers}}
+        <option value="{{ID}}">{{Fname}} {{Lname}} </option>
+        {{/each}}
+    </select><br>
+    Date: <input type="date" name="Date" value="{{Invoices.Date}}" required><br>
+
+</form>
+<button onclick="updateInvoices({{Invoices.ID}})">Update</button>
+<script defer>selectCustomer({{Invoices.CustomerID}});</script>
+</html>
+
+
+<script src="/updateparts.js"></script>
+<script src="/selectedcustomer.js"></script>

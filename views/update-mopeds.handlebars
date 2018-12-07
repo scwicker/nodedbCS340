@@ -1,0 +1,14 @@
+
+<html>
+<h1>Update {{Mopeds.Model}}:</h1>
+<form id="update-mopeds" action="/mopeds" method="post">
+    Make: <input type="text" name="Make" value="{{Mopeds.Make}}"><br>
+    Model: <input type="text" name="Model" value="{{Mopeds.Model}}"><br>
+    Year: <input type="number" name="Year" value="{{Mopeds.Year}}"><br>
+
+</form>
+<button onclick="updateMopeds({{Mopeds.ID}})">Update</button>
+</html>
+
+
+<script src="/updateparts.js"></script>
